@@ -11,8 +11,7 @@ REQUIRED = [
     OUT / "model_comparison.csv",
     OUT / "monthly_sales.csv",
     OUT / "top_countries.csv",
-    OUT / "forecast_vs_actual.png",
-    OUT / "monthly_revenue.png",
+    OUT / "forecast_predictions.csv",
 ]
 
 st.title("Retail Sales Forecasting Intelligence")
@@ -42,7 +41,8 @@ st.caption(
 )
 
 st.subheader("42-day forecast vs actual")
-st.image(str(OUT / "forecast_vs_actual.png"), use_container_width=True)
+forecast = pd.read_csv(OUT / "forecast_predictions.csv", parse_dates=["date"]).set_index("date")
+st.line_chart(forecast[["actual", "forecast"]], use_container_width=True)
 st.caption(
     "The 7-day seasonal naive baseline produced the lowest MAE and RMSE on the held-out period. "
     "That is an important forecasting result: a more complex model is not automatically better."
@@ -61,7 +61,9 @@ with right:
     st.bar_chart(countries.set_index("Country")["revenue"])
 
 st.subheader("Monthly revenue trend")
-st.image(str(OUT / "monthly_revenue.png"), use_container_width=True)
+monthly["InvoiceDate"] = pd.to_datetime(monthly.iloc[:, 0])
+monthly_chart = monthly.set_index("InvoiceDate")[["sales"]]
+st.line_chart(monthly_chart, use_container_width=True)
 
 st.subheader("What this project demonstrates")
 st.write(
