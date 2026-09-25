@@ -60,3 +60,29 @@ streamlit run app.py
 ```
 
 Executed results are written to `outputs/` by the training workflow.
+
+
+## Executed results
+
+The GitHub Actions pipeline ran successfully on the full UCI dataset.
+
+- Raw transactions: **541,909**
+- Clean transactions: **530,104**
+- Analysis period: **2010-12-01 to 2011-12-09**
+- Chronological test horizon: **42 days**
+- Clean revenue analyzed: **£10.67M**
+- Best model by MAE/RMSE: **7-day Seasonal Naive**
+- Test MAE: **£14,934**
+- Test RMSE: **£27,933**
+- Test MAPE: **26.32%**
+
+### Model comparison
+
+| Model | MAE | RMSE | MAPE |
+| --- | ---: | ---: | ---: |
+| Seasonal Naive (7-day) | £14,934 | £27,933 | 26.32% |
+| Ridge Regression | £16,172 | £28,631 | **24.15%** |
+| Random Forest | £17,329 | £30,368 | 28.65% |
+| HistGradientBoosting | £19,220 | £32,014 | 30.96% |
+
+A useful result from this project is that the simple weekly seasonal baseline outperformed the more complex machine-learning models on MAE and RMSE. Ridge Regression achieved the lowest MAPE. The project therefore demonstrates baseline benchmarking rather than assuming model complexity guarantees better forecasts.
