@@ -2,6 +2,10 @@
 
 End-to-end **analytics + time-series forecasting** project built on the UCI Online Retail dataset.
 
+## Live demo
+
+**[Open the Streamlit app](https://retail-sales-forecasting-intelligence-3gt7qsyapxmpho4w7rquft.streamlit.app)**
+
 ## Why this project
 
 The portfolio already contains a supervised machine-learning classification project. This second project broadens the work into:
