@@ -133,6 +133,12 @@ def main():
     }
 
     results_df.to_csv(OUT / "model_comparison.csv", index=False)
+    forecast_df = pd.DataFrame({
+        "date": y_test.index,
+        "actual": y_test.values,
+        "forecast": best_pred
+    })
+    forecast_df.to_csv(OUT / "forecast_predictions.csv", index=False)
     with open(OUT / "metrics.json", "w") as f:
         json.dump(metrics, f, indent=2)
 
