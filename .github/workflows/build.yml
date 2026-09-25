@@ -1,0 +1,32 @@
+name: Build Forecasting Artifacts
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - train.py
+      - requirements.txt
+      - .github/workflows/build.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install -q -r requirements.txt
+      - name: Run analytics and forecasting pipeline
+        run: python train.py
+      - name: Upload executed outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: retail-forecasting-outputs
+          path: outputs/
+          retention-days: 30
