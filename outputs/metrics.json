@@ -1,0 +1,16 @@
+{
+  "dataset_rows_raw": 541909,
+  "dataset_rows_clean": 530104,
+  "date_min": "2010-12-01",
+  "date_max": "2011-12-09",
+  "forecast_horizon_days": 42,
+  "best_model": "SeasonalNaive7",
+  "test_metrics": {
+    "MAE": 14934.050952380952,
+    "RMSE": 27933.252108154524,
+    "MAPE": 26.319875976062125
+  },
+  "total_revenue_clean_gbp": 10666684.544,
+  "daily_sales_mean_gbp": 28520.54690909091,
+  "daily_sales_median_gbp": 25974.345
+}
