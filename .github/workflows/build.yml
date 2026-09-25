@@ -30,3 +30,4 @@ jobs:
           name: retail-forecasting-outputs
           path: outputs/
           retention-days: 30
+
